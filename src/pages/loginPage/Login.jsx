@@ -2,7 +2,7 @@ import { useState } from "react";
 import logoType from "../../components/svg/logoType.svg";
 
 const Phoneregex = /^09[0-9]{2}[0-9]{7}$/;
-const EmailRegex = /(.*)\@(.*)\.(\w+)/;
+const EmailRegex = /^(.*)\@(.*)\.(\w+)$/;
 const WhiteSpaceRegex = /^\s*$/;
 
 function Login() {
@@ -55,11 +55,11 @@ function Login() {
         <div>
           <input
             type="text"
-            className="outline-none rounded-lg border w-full border-cyan-400 py-3 px-3 caret-cyan-400"
+            className="outline-none rounded-lg border w-full font-light border-cyan-400 py-3 px-3 caret-cyan-400"
             id="input"
             onChange={(e) => func(e.target.value)}
           />
-          <p id="ptest" className="text-xs mt-2"></p>
+          <p id="ptest" className="text-xs mt-2 hidden"></p>
           <button
             className="font-bold w-full mt-7 text-white bg-red-500 py-3 rounded-lg"
             onClick={Clicked}
@@ -67,7 +67,7 @@ function Login() {
             ورود
           </button>
         </div>
-        <p className="text-xxs mt-2">
+        <p className="text-xxs mt-2 ">
           ورود شما به معنای پذیرش{" "}
           <a href="#" className="text-cyan-600">
             شرایط دیجی‌کالا
@@ -84,4 +84,3 @@ function Login() {
 }
 
 export default Login;
-// ورود شما به معنای پذیرش شرایط دیجی‌کالا و قوانین حریم‌خصوصی است
