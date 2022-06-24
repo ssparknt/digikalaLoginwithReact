@@ -7,6 +7,7 @@ const WhiteSpaceRegex = /^\s*$/;
 
 function Login() {
   const [inputvalue, func] = useState();
+  const [regexError, funcE] = useState(true);
 
   function Clicked() {
     const PhoneRes = Phoneregex.test(inputvalue);
@@ -19,20 +20,20 @@ function Login() {
 
     if (PhoneRes == true || EmailRes == true) {
       console.log("ok");
-      document.getElementById("ptest").style.display = "none";
+      funcE(true);
       document.getElementById("input").style.borderColor = "#12ff49";
     } else if (WhiteSpaceRes) {
       console.log("blank");
       document.getElementById("ptest").innerHTML =
         "لطفا این قسمت را خالی نگذارید";
-      document.getElementById("ptest").style.display = "block";
+      funcE(false);
       document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
     } else {
       console.log("error");
       document.getElementById("ptest").innerHTML =
         "شماره موبایل یا ایمیل نادرست است.";
-      document.getElementById("ptest").style.display = "block";
+      funcE(false);
       document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
     }
@@ -59,7 +60,10 @@ function Login() {
             id="input"
             onChange={(e) => func(e.target.value)}
           />
-          <p id="ptest" className="text-xs mt-2"></p>
+          <p
+            id="ptest"
+            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
+          ></p>
           <button
             className="font-bold w-full mt-7 text-white bg-red-500 py-3 rounded-lg"
             onClick={Clicked}
@@ -84,4 +88,3 @@ function Login() {
 }
 
 export default Login;
-// ورود شما به معنای پذیرش شرایط دیجی‌کالا و قوانین حریم‌خصوصی است
