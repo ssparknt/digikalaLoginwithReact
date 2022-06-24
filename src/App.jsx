@@ -1,9 +1,12 @@
 import "../dist/output.css";
+import Login from "./pages/loginPage/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
 
 export default App;
