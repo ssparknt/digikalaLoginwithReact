@@ -8,9 +8,9 @@ const WhiteSpaceRegex = /^\s*$/;
 function Login() {
   // ok
   const [inputvalue, func] = useState();
-  const [Error, funcE] = useState(true);
+  const [error, funcE] = useState(true);
   const [blank, funcB] = useState(true);
-  const [ok, funcO] = useState(true);
+
   //  ok
   function Clicked() {
     const PhoneRes = Phoneregex.test(inputvalue);
@@ -23,18 +23,19 @@ function Login() {
 
     if (PhoneRes == true || EmailRes == true) {
       console.log("ok");
-      funcE(true);
       document.getElementById("input").style.borderColor = "#12ff49";
+      funcE(true);
+      funcB(true);
     } else if (WhiteSpaceRes) {
       console.log("blank");
-      funcE(false);
-      document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
+      funcB(false);
+      funcE(true);
     } else {
       console.log("error");
-      funcE(false);
-      document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
+      funcB(true);
+      funcE(false);
     }
   }
 
@@ -62,22 +63,18 @@ function Login() {
 
           {/* ok */}
           <p
-            id="ptest"
-            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
+            className={`text-xs mt-2 text-red-600 ${
+              error ? "hidden" : "block"
+            }`}
           >
-            error
+            شماره موبایل یا ایمیل نادرست است.
           </p>
           <p
-            id="ptest"
-            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
+            className={`text-xs mt-2 text-red-600 ${
+              blank ? "hidden" : "block"
+            }`}
           >
-            blank
-          </p>
-          <p
-            id="ptest"
-            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
-          >
-            ok
+            لطفا این قسمت را خالی نگذارید
           </p>
           {/* ok */}
 
