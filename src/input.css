@@ -12,5 +12,13 @@
 }
 
 * {
-  font-family: IranYekan;
+  font-family: "IranYekan";
+}
+
+.text-xxs {
+  font-size: 10px;
+}
+
+section {
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
