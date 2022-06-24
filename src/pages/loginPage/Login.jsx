@@ -6,9 +6,12 @@ const EmailRegex = /(.*)\@(.*)\.(\w+)/;
 const WhiteSpaceRegex = /^\s*$/;
 
 function Login() {
+  // ok
   const [inputvalue, func] = useState();
-  const [regexError, funcE] = useState(true);
-
+  const [Error, funcE] = useState(true);
+  const [blank, funcB] = useState(true);
+  const [ok, funcO] = useState(true);
+  //  ok
   function Clicked() {
     const PhoneRes = Phoneregex.test(inputvalue);
     const EmailRes = EmailRegex.test(inputvalue);
@@ -24,15 +27,11 @@ function Login() {
       document.getElementById("input").style.borderColor = "#12ff49";
     } else if (WhiteSpaceRes) {
       console.log("blank");
-      document.getElementById("ptest").innerHTML =
-        "لطفا این قسمت را خالی نگذارید";
       funcE(false);
       document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
     } else {
       console.log("error");
-      document.getElementById("ptest").innerHTML =
-        "شماره موبایل یا ایمیل نادرست است.";
       funcE(false);
       document.getElementById("ptest").style.color = "#ff1212";
       document.getElementById("input").style.borderColor = "#ff1212";
@@ -60,10 +59,28 @@ function Login() {
             id="input"
             onChange={(e) => func(e.target.value)}
           />
+
+          {/* ok */}
           <p
             id="ptest"
             className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
-          ></p>
+          >
+            error
+          </p>
+          <p
+            id="ptest"
+            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
+          >
+            blank
+          </p>
+          <p
+            id="ptest"
+            className={`text-xs mt-2 hidden ${regexError ? "hidden" : "block"}`}
+          >
+            ok
+          </p>
+          {/* ok */}
+
           <button
             className="font-bold w-full mt-7 text-white bg-red-500 py-3 rounded-lg"
             onClick={Clicked}
